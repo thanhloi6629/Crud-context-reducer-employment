@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, useParams } from 'react-router-dom';
 
 import { GlobalContext } from '../context/GlobalState';
 
-export const EditEmployee = (route) => {
+export const EditEmployee = () => {
   let history = useHistory();
-
+  const params = useParams();
   const { employees, editEmployee } = useContext(GlobalContext);
 
   const [selectedUser, setSelectedUser] = useState({
@@ -15,7 +15,7 @@ export const EditEmployee = (route) => {
     location: "",
   });
 
-  const currentUserId = route.match.params.id;
+  const currentUserId = params?.id;
 
   useEffect(() => {
     const employeeId = currentUserId;
